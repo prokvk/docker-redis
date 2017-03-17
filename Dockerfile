@@ -5,9 +5,10 @@ MAINTAINER Scott Mebberson <scott@scottmebberson.com>
 RUN echo "http://dl-4.alpinelinux.org/alpine/v3.1/main" >> /etc/apk/repositories && \
     apk add --update redis=2.8.23-r0 && \
     rm -rf /var/cache/apk/* && \
-    mkdir /data && \
+    mkdir -p /data /var/redis/6379 /etc/redis/6379 && \
     chown -R redis:redis /data && \
-    echo -e "include /etc/redis-local.conf\n" >> /etc/redis.conf
+    chown -R redis:redis /var/redis/6379 && \
+    chown -R redis:redis /etc/redis/6379
 
 # Add the files
 ADD root /

@@ -1,10 +1,9 @@
 IMAGE = redis
 NAME = redis
 PORTS = -p 6379:6379
-# VOLUMES = \
-	# -v /home/prokvk/dev/Usertech/rossap-env/docker-redis/root/etc:/etc
-# 	-v $$HOME/Downloads/docker/lamp/_mysql_data:/var/lib/mysql
-	# -v $$HOME/Downloads/lamp/_mysql_logs:/usr/share/mysql
+VOLUMES = \
+	-v $$PWD/config:/etc/redis/6379 \
+	-v $$PWD/data:/var/redis/6379
 
 .PHONY: build run cli stop inspect rm logs ports
 
