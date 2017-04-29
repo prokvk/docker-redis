@@ -5,7 +5,7 @@ VOLUMES = \
 	-v $$PWD/config:/etc/redis/6379 \
 	-v $$PWD/data:/var/redis/6379
 
-.PHONY: build run cli stop inspect rm logs ports
+.PHONY: build run cli stop inspect rm logs ports up
 
 build:
 		docker build -t $(IMAGE) .
@@ -32,3 +32,6 @@ logs:
 
 ports:
 		docker port $(NAME)
+
+up:
+		rsync -avz ./* /home/prokvk/dev/forpsi/docker-redis --exclude data
